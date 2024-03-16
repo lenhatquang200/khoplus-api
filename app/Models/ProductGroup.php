@@ -77,7 +77,7 @@ use Illuminate\Database\Eloquent\Model;
         'name' => 'required|string|max:191',
         'image' => 'nullable|string|max:191',
         'description' => 'nullable|string|max:191',
-        'active' => 'required|boolean',
+        'active' => 'nullable',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'
     ];

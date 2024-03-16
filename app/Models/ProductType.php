@@ -55,7 +55,7 @@ use Illuminate\Database\Eloquent\Model;
 
     public static array $rules = [
         'name' => 'required|string|max:191',
-        'active' => 'required|boolean',
+        'active' => 'nullable',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'
     ];

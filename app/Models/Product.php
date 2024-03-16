@@ -114,7 +114,7 @@ use Illuminate\Database\Eloquent\Model;
         'price' => 'required',
         'base_price' => 'nullable',
         'inventory' => 'nullable',
-        'active' => 'required|boolean',
+        'active' => 'nullable',
         'is_inventory' => 'nullable',
         'is_return' => 'nullable',
         'is_sell' => 'nullable',
