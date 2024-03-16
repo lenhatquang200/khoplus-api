@@ -122,7 +122,15 @@ use Illuminate\Database\Eloquent\Model;
         'created_at' => 'nullable',
         'updated_at' => 'nullable'
     ];
+    protected $appends
+      = [
+        'formatted_created_at'
+      ];
 
+    public function getFormattedCreatedAtAttribute()
+    {
+        return $this->created_at->format('d/m/Y H:i:s');
+    }
     public function unit(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(\App\Models\ProductUnit::class, 'unit_id');

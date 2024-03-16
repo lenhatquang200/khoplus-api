@@ -49,7 +49,15 @@ use Illuminate\Database\Eloquent\Model;
         'acreage',
         'note'
     ];
+    protected $appends
+      = [
+        'formatted_created_at'
+      ];
 
+    public function getFormattedCreatedAtAttribute()
+    {
+        return $this->created_at->format('d/m/Y H:i:s');
+    }
     protected $casts = [
         'acreage' => 'string',
         'note' => 'string'

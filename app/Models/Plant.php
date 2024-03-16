@@ -52,7 +52,15 @@ use Illuminate\Database\Eloquent\Model;
         'name' => 'string',
         'note' => 'string'
     ];
+    protected $appends
+      = [
+        'formatted_created_at'
+      ];
 
+    public function getFormattedCreatedAtAttribute()
+    {
+        return $this->created_at->format('d/m/Y H:i:s');
+    }
     public static array $rules = [
         'name' => 'required|string|max:255',
         'note' => 'nullable|string|max:255',

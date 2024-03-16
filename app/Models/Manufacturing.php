@@ -116,7 +116,15 @@ use Illuminate\Database\Eloquent\Model;
         'account_number',
         'bank_name'
     ];
+    protected $appends
+      = [
+        'formatted_created_at'
+      ];
 
+    public function getFormattedCreatedAtAttribute()
+    {
+        return $this->created_at->format('d/m/Y H:i:s');
+    }
     protected $casts = [
         'code' => 'string',
         'name' => 'string',
