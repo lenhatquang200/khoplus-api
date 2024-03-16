@@ -57,9 +57,7 @@ use Illuminate\Database\Eloquent\Model;
     public static array $rules = [
         'name' => 'required|string|max:255',
         'description' => 'nullable|string|max:255',
-        'active' => 'nullable',
-        'created_at' => 'nullable',
-        'updated_at' => 'nullable'
+        'active' => 'nullable'
     ];
     protected $appends
       = [
