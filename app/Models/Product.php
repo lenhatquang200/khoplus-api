@@ -111,7 +111,7 @@ use Illuminate\Database\Eloquent\Model;
         'description' => 'nullable|string|max:191',
         'image' => 'nullable|string|max:191',
         'vat_percent' => 'nullable|numeric',
-        'price' => 'required',
+        'price' => 'nullable',
         'base_price' => 'nullable',
         'inventory' => 'nullable',
         'active' => 'nullable',
