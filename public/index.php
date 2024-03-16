@@ -2,7 +2,9 @@
 
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
-
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: *');
+header('Access-Control-Allow-Headers: *');
 define('LARAVEL_START', microtime(true));
 define('STDIN',fopen("php://stdin","r"));
 
