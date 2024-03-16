@@ -102,7 +102,6 @@ use Illuminate\Database\Eloquent\Model;
     ];
 
     public static array $rules = [
-        'code' => 'required|string|max:191',
         'name' => 'required|string|max:191',
         'type_id' => 'required',
         'group_id' => 'required',

@@ -93,7 +93,8 @@ class ProductAPIController extends AppBaseController
     public function store(CreateProductAPIRequest $request): JsonResponse
     {
         $input = $request->all();
-
+        if(!$input->code)
+            $input->code = time();
         /** @var Product $product */
         $product = Product::create($input);
 
