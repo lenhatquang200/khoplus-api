@@ -10,6 +10,221 @@
         }
     ],
     "paths": {
+        "/branches": {
+            "get": {
+                "tags": [
+                    "Branch"
+                ],
+                "summary": "getBranchList",
+                "description": "Get all Branches",
+                "operationId": "22a3d518d1f4e1c0311761692ee0a591",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/components/schemas/Branch"
+                                            }
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Branch"
+                ],
+                "summary": "createBranch",
+                "description": "Create Branch",
+                "operationId": "a99bbe07f23e28e41eb4bdfdd1578a23",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Branch"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/Branch"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/branches/{id}": {
+            "get": {
+                "tags": [
+                    "Branch"
+                ],
+                "summary": "getBranchItem",
+                "description": "Get Branch",
+                "operationId": "00e54bdf1f32a8b36b8fd7a826a29136",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Branch",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/Branch"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Branch"
+                ],
+                "summary": "updateBranch",
+                "description": "Update Branch",
+                "operationId": "2c105afa66a134ca1adb3fb9e893969b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Branch",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Branch"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "data": {
+                                            "$ref": "#/components/schemas/Branch"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Branch"
+                ],
+                "summary": "deleteBranch",
+                "description": "Delete Branch",
+                "operationId": "f1507156740db25841c45b10b976efbd",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Branch",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean"
+                                        },
+                                        "data": {
+                                            "type": "string"
+                                        },
+                                        "message": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/customers": {
             "get": {
                 "tags": [
@@ -2163,6 +2378,65 @@
     },
     "components": {
         "schemas": {
+            "Branch": {
+                "required": [
+                    "name",
+                    "first_setup"
+                ],
+                "properties": {
+                    "name": {
+                        "description": "",
+                        "type": "string",
+                        "readOnly": false,
+                        "nullable": false
+                    },
+                    "address": {
+                        "description": "",
+                        "type": "string",
+                        "readOnly": false,
+                        "nullable": true
+                    },
+                    "phone": {
+                        "description": "",
+                        "type": "string",
+                        "readOnly": false,
+                        "nullable": true
+                    },
+                    "image": {
+                        "description": "",
+                        "type": "string",
+                        "readOnly": false,
+                        "nullable": true
+                    },
+                    "created_at": {
+                        "description": "",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": true,
+                        "nullable": true
+                    },
+                    "updated_at": {
+                        "description": "",
+                        "type": "string",
+                        "format": "date-time",
+                        "readOnly": true,
+                        "nullable": true
+                    },
+                    "lat": {
+                        "description": "",
+                        "type": "string",
+                        "readOnly": false,
+                        "nullable": true
+                    },
+                    "long": {
+                        "description": "",
+                        "type": "string",
+                        "readOnly": false,
+                        "nullable": true
+                    }
+                },
+                "type": "object"
+            },
             "Customer": {
                 "required": [
                     "customer_group",

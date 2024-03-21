@@ -35,6 +35,7 @@ class AuthController extends AppBaseController
         $user->userPermission;
         $user->permissionGroup;
         $user->roles;
+        $user->branches;
 
         $result =
             [

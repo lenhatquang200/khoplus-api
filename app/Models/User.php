@@ -54,6 +54,10 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Role::class, 'user_roles');
     }
+    public function branches()
+    {
+        return $this->belongsToMany(Branch::class, 'user_branches');
+    }
 
     public function getUserPermissionAttribute()
     {

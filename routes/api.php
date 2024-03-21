@@ -60,5 +60,9 @@ Route::group(['middleware' => 'auth:api'], function () {
         Route::get('get-districts', [AddressController::class, 'getDistrict']);
         Route::get('get-wards', [AddressController::class, 'getWard']);
     });
+    Route::resource('branches', App\Http\Controllers\API\BranchAPIController::class)
+      ->except(['create', 'edit']);
 });
+
+
 

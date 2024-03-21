@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Branch;
 use App\Models\CustomerGroup;
 use App\Models\ManufacturingGroup;
 use App\Models\Permission;
@@ -20,6 +21,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $branch1 = Branch::create([
+            'name'=>'Cửa hàng 001'
+        ]);
+        $branch2 = Branch::create([
+            'name'=>'Cửa hàng 002'
+        ]);
+
         $roleAdmin = Role::create(
           [
             "name" => "administrator",
@@ -67,6 +75,8 @@ class DatabaseSeeder extends Seeder
               'password' => bcrypt('admin'),
             ]);
             $users->roles()->attach($role);
+            $users->branches()->attach($branch1);
+            $users->branches()->attach($branch2);
         }
         $customerGroup = CustomerGroup::count();
         if ($customerGroup == 0) {
