@@ -55,7 +55,9 @@ class ManufacturingAPIController extends AppBaseController
         }
 
         $manufacturings = $query->get();
-
+        $manufacturings->map(function($manufacturing){
+            $manufacturing->manufacturingGroup;
+        });
         return $this->sendResponse($manufacturings->toArray(), 'Manufacturings retrieved successfully');
     }
 
@@ -144,7 +146,7 @@ class ManufacturingAPIController extends AppBaseController
         if (empty($manufacturing)) {
             return $this->sendError('Manufacturing not found');
         }
-
+        $manufacturing->manufacturingGroup;
         return $this->sendResponse($manufacturing->toArray(), 'Manufacturing retrieved successfully');
     }
 

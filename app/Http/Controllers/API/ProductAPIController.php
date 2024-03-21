@@ -55,7 +55,12 @@ class ProductAPIController extends AppBaseController
         }
 
         $products = $query->get();
-
+        $products->map(
+          function ($product) {
+              $product->unit;
+              $product->group;
+              $product->type;
+          });
         return $this->sendResponse($products->toArray(), 'Products retrieved successfully');
     }
 
@@ -93,8 +98,8 @@ class ProductAPIController extends AppBaseController
     public function store(CreateProductAPIRequest $request): JsonResponse
     {
         $input = $request->all();
-        if(!$input->code)
-            $input->code = time();
+        if(!isset($input['code']) || $input['code']=='')
+            $input['code'] = time();
         /** @var Product $product */
         $product = Product::create($input);
 
@@ -145,7 +150,9 @@ class ProductAPIController extends AppBaseController
         if (empty($product)) {
             return $this->sendError('Product not found');
         }
-
+        $product->unit;
+        $product->group;
+        $product->type;
         return $this->sendResponse($product->toArray(), 'Product retrieved successfully');
     }
 

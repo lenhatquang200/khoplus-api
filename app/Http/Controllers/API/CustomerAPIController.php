@@ -55,7 +55,11 @@ class CustomerAPIController extends AppBaseController
         }
 
         $customers = $query->get();
-
+        $customers->map(
+          function ($customer) {
+              $customer->customerGroup;
+              $customer->customerFarms;
+          });
         return $this->sendResponse($customers->toArray(), 'Customers retrieved successfully');
     }
 
