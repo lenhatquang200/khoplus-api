@@ -201,7 +201,7 @@ class ManufacturingAPIController extends AppBaseController
 
         $manufacturing->fill($request->all());
         $manufacturing->save();
-
+        $manufacturing->manufacturingGroup;
         return $this->sendResponse($manufacturing->toArray(), 'Manufacturing updated successfully');
     }
 

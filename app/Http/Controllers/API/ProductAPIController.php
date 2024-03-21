@@ -207,7 +207,9 @@ class ProductAPIController extends AppBaseController
 
         $product->fill($request->all());
         $product->save();
-
+        $product->unit;
+        $product->group;
+        $product->type;
         return $this->sendResponse($product->toArray(), 'Product updated successfully');
     }
 
