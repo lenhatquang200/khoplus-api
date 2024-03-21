@@ -66,3 +66,7 @@ Route::group(['middleware' => 'auth:api'], function () {
 
 
 
+
+
+Route::resource('customer-farms', App\Http\Controllers\API\CustomerFarmAPIController::class)
+    ->except(['create', 'edit']);

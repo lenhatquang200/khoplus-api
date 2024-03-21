@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * @OA\Schema(
  *      schema="CustomerFarm",
- *      required={"customer_id","plant_id","acreage"},
+ *      required={"customer_id","plant_id","acreage","lat","long"},
  *      @OA\Property(
  *          property="acreage",
  *          description="",
@@ -37,6 +37,20 @@ use Illuminate\Database\Eloquent\Model;
  *          readOnly=false,
  *          nullable=true,
  *          type="string",
+ *      ),
+ *      @OA\Property(
+ *          property="lat",
+ *          description="",
+ *          readOnly=false,
+ *          nullable=false,
+ *          type="string",
+ *      ),
+ *      @OA\Property(
+ *          property="long",
+ *          description="",
+ *          readOnly=false,
+ *          nullable=false,
+ *          type="string",
  *      )
  * )
  */class CustomerFarm extends Model
@@ -47,20 +61,16 @@ use Illuminate\Database\Eloquent\Model;
         'customer_id',
         'plant_id',
         'acreage',
-        'note'
+        'note',
+        'lat',
+        'long'
     ];
-    protected $appends
-      = [
-        'formatted_created_at'
-      ];
 
-    public function getFormattedCreatedAtAttribute()
-    {
-        return $this->created_at->format('d/m/Y H:i:s');
-    }
     protected $casts = [
         'acreage' => 'string',
-        'note' => 'string'
+        'note' => 'string',
+        'lat' => 'string',
+        'long' => 'string'
     ];
 
     public static array $rules = [
@@ -69,7 +79,9 @@ use Illuminate\Database\Eloquent\Model;
         'acreage' => 'required|string|max:255',
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
-        'note' => 'nullable|string|max:255'
+        'note' => 'nullable|string|max:255',
+        'lat' => 'required|string|max:255',
+        'long' => 'required|string|max:255'
     ];
 
     public function plant(): \Illuminate\Database\Eloquent\Relations\BelongsTo

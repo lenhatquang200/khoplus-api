@@ -55,7 +55,9 @@ class CustomerFarmAPIController extends AppBaseController
         }
 
         $customerFarms = $query->get();
-
+        $customerFarms->map(function ($customerFarm){
+            $customerFarm->plant;
+        });
         return $this->sendResponse($customerFarms->toArray(), 'Customer Farms retrieved successfully');
     }
 
@@ -96,7 +98,7 @@ class CustomerFarmAPIController extends AppBaseController
 
         /** @var CustomerFarm $customerFarm */
         $customerFarm = CustomerFarm::create($input);
-
+        $customerFarm->plant;
         return $this->sendResponse($customerFarm->toArray(), 'Customer Farm saved successfully');
     }
 
@@ -144,7 +146,7 @@ class CustomerFarmAPIController extends AppBaseController
         if (empty($customerFarm)) {
             return $this->sendError('Customer Farm not found');
         }
-
+        $customerFarm->plant;
         return $this->sendResponse($customerFarm->toArray(), 'Customer Farm retrieved successfully');
     }
 
@@ -199,7 +201,7 @@ class CustomerFarmAPIController extends AppBaseController
 
         $customerFarm->fill($request->all());
         $customerFarm->save();
-
+        $customerFarm->plant;
         return $this->sendResponse($customerFarm->toArray(), 'CustomerFarm updated successfully');
     }
 
