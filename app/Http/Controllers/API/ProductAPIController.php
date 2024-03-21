@@ -102,7 +102,9 @@ class ProductAPIController extends AppBaseController
             $input['code'] = time();
         /** @var Product $product */
         $product = Product::create($input);
-
+        $product->unit;
+        $product->group;
+        $product->type;
         return $this->sendResponse($product->toArray(), 'Product saved successfully');
     }
 

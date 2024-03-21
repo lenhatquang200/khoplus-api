@@ -98,7 +98,7 @@ class ManufacturingAPIController extends AppBaseController
 
         /** @var Manufacturing $manufacturing */
         $manufacturing = Manufacturing::create($input);
-
+        $manufacturing->manufacturingGroup;
         return $this->sendResponse($manufacturing->toArray(), 'Manufacturing saved successfully');
     }
 
