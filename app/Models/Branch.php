@@ -106,7 +106,6 @@ use Illuminate\Database\Eloquent\Model;
         'image' => 'nullable|string|max:191',
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
-        'first_setup' => 'required',
         'lat' => 'nullable|string|max:255',
         'long' => 'nullable|string|max:255'
     ];
