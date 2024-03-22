@@ -2504,7 +2504,9 @@
                 "required": [
                     "customer_id",
                     "plant_id",
-                    "acreage"
+                    "acreage",
+                    "lat",
+                    "long"
                 ],
                 "properties": {
                     "acreage": {
@@ -2532,6 +2534,18 @@
                         "type": "string",
                         "readOnly": false,
                         "nullable": true
+                    },
+                    "lat": {
+                        "description": "",
+                        "type": "string",
+                        "readOnly": false,
+                        "nullable": false
+                    },
+                    "long": {
+                        "description": "",
+                        "type": "string",
+                        "readOnly": false,
+                        "nullable": false
                     }
                 },
                 "type": "object"
