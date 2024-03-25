@@ -98,10 +98,13 @@ class CustomerAPIController extends AppBaseController
     public function store(CreateCustomerAPIRequest $request): JsonResponse
     {
         $input = $request->all();
-
+        $input['branch_id']=$request->header('current-branch');
+//        dd($input);
         /** @var Customer $customer */
         $customer = Customer::create($input);
-
+        $customer->customerGroup;
+        $customer->customerBranch;
+        $customer->customerFarms;
         return $this->sendResponse($customer->toArray(), 'Customer saved successfully');
     }
 
@@ -149,7 +152,9 @@ class CustomerAPIController extends AppBaseController
         if (empty($customer)) {
             return $this->sendError('Customer not found');
         }
-
+        $customer->customerGroup;
+        $customer->customerBranch;
+        $customer->customerFarms;
         return $this->sendResponse($customer->toArray(), 'Customer retrieved successfully');
     }
 
@@ -204,7 +209,9 @@ class CustomerAPIController extends AppBaseController
 
         $customer->fill($request->all());
         $customer->save();
-
+        $customer->customerGroup;
+        $customer->customerBranch;
+        $customer->customerFarms;
         return $this->sendResponse($customer->toArray(), 'Customer updated successfully');
     }
 
