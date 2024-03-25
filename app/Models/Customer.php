@@ -74,7 +74,6 @@ use Illuminate\Database\Eloquent\Model;
 
     public $fillable = [
         'customer_group',
-        'branch_id',
         'name',
         'phone',
         'birthday',
