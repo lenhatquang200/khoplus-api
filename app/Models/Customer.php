@@ -98,7 +98,7 @@ use Illuminate\Database\Eloquent\Model;
 
     public static array $rules = [
         'customer_group' => 'required',
-        'branch_id' => 'required',
+        'branch_id' => 'nullable',
         'name' => 'required|string|max:191',
         'phone' => 'required|string|max:20',
         'birthday' => 'nullable',
