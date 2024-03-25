@@ -107,7 +107,7 @@ use Illuminate\Database\Eloquent\Model;
         'ward_id' => 'nullable',
         'note' => 'nullable|string|max:191',
         'image' => 'nullable|string|max:191',
-        'gender' => 'required',
+        'gender' => 'nullable',
         'created_at' => 'nullable',
         'updated_at' => 'nullable'
     ];
