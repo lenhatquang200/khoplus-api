@@ -81,6 +81,7 @@ use Illuminate\Database\Eloquent\Model;
         'province_id',
         'district_id',
         'ward_id',
+        'branch_id',
         'note',
         'image',
         'gender'
