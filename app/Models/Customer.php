@@ -74,6 +74,7 @@ use Illuminate\Database\Eloquent\Model;
 
     public $fillable = [
         'customer_group',
+        'branch_id',
         'name',
         'phone',
         'birthday',
@@ -81,7 +82,6 @@ use Illuminate\Database\Eloquent\Model;
         'province_id',
         'district_id',
         'ward_id',
-        'branch_id',
         'note',
         'image',
         'gender'
@@ -124,6 +124,10 @@ use Illuminate\Database\Eloquent\Model;
     public function customerGroup(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(\App\Models\CustomerGroup::class, 'customer_group');
+    }
+    public function customerBranch(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(\App\Models\Branch::class, 'branch_id');
     }
 
     public function customerFarms(): \Illuminate\Database\Eloquent\Relations\HasMany
