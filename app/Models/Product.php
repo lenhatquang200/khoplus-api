@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 /**
  * @OA\Schema(
@@ -108,7 +109,7 @@ use Illuminate\Database\Eloquent\Model;
         'unit_id' => 'required',
         'larger_unit' => 'nullable',
         'description' => 'nullable|string|max:191',
-        'image' => 'nullable|string|max:191',
+        'image' => 'nullable|image|max:191',
         'vat_percent' => 'nullable|numeric',
         'price' => 'nullable',
         'base_price' => 'nullable',
@@ -123,9 +124,19 @@ use Illuminate\Database\Eloquent\Model;
     ];
     protected $appends
       = [
-        'formatted_created_at'
+        'formatted_created_at',
+        'image_url'
       ];
+    public function getImageUrlAttribute()
+    {
+        if ($this->image) {
+            if (Storage::disk('public')->exists('products/' . $this->image)) {
+                return url('storage/products/' . $this->image);
+            }
+        }
 
+        return "https://picsum.photos/200";
+    }
     public function getFormattedCreatedAtAttribute()
     {
         return $this->created_at->format('d/m/Y H:i:s');

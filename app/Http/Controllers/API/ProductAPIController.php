@@ -101,6 +101,36 @@ class ProductAPIController extends AppBaseController
         if(!isset($input['code']) || $input['code']=='')
             $input['code'] = time();
         /** @var Product $product */
+
+        $filename = '';
+        if ($request->hasFile('image')) {
+            //                if (filesize($request->image) > (1024 * 1024 * 5)) {
+            //                    return $this->error([], 'Kích thước ảnh quá lớn!');
+            //                }
+            $max_zise = 1024 * 1024 * 10;
+            if (filesize($request->image) > $max_zise) {
+                $destinationPath = storage_path('app/public/products');
+                $filename        = (rand(1, 100) + time()) . '.'
+                  . $request->image->getClientOriginalExtension();
+                $img             = Image::make($request->image);
+                //                    $img->resize(640);
+                $img->resize(640, NULL, function ($constraint) {
+                    $constraint->aspectRatio();
+                    $constraint->upsize();
+                });
+                $img->save($destinationPath . '/' . $filename, 70);
+            }
+            else {
+                $filename = (rand(1, 100) + time()) . '.'
+                  . $request->image->getClientOriginalExtension();
+                $request->image->storeAs(
+                  'products/',
+                  $filename, ['disk' => 'public']
+                );
+            }
+        }
+        $input['image'] = $filename;
+
         $product = Product::create($input);
         $product->unit;
         $product->group;
